@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calcola l’ora per dormire</title>
+  <title>Sleep Calculator</title>
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -70,23 +70,23 @@
   </style>
 </head>
 <body>
-  <h1>🛌 A che ora dormire?</h1>
-  <p>Inserisci l’orario in cui vuoi svegliarti:</p>
+  <h1>🛌 What time should I sleep?</h1>
+  <p>Enter the time you want to wake up:</p>
   <input type="time" id="wakeTime">
   <br>
-  <button onclick="calculate()">Calcola</button>
+  <button onclick="calculate()">Calculate</button>
 
   <div class="result" id="result"></div>
 
   <div class="tips">
-    💡 Consigli per dormire meglio:<br>
-    • Spegni i dispositivi 30 min prima di dormire<br>
-    • Mantieni la stanza fresca e buia<br>
-    • Evita caffeina e zuccheri la sera<br>
-    • Segui cicli di sonno di circa 90 minuti
+    💡 Sleep tips:<br>
+    • Turn off devices 30 min before bed<br>
+    • Keep the room cool and dark<br>
+    • Avoid caffeine and sugar in the evening<br>
+    • Follow 90-minute sleep cycles
   </div>
 
-  <footer>© 2025 SleepCalc | Tutti i diritti riservati</footer>
+  <footer>© 2025 SleepCalc | All rights reserved</footer>
 
   <script>
     function calculate() {
@@ -103,7 +103,7 @@
         cycles.push(`${hh}:${mm}`);
       }
       document.getElementById('result').innerHTML =
-        `Dovresti addormentarti alle:<br><strong>${cycles.reverse().join(' • ')}</strong>`;
+        `You should go to sleep at:<br><strong>${cycles.reverse().join(' • ')}</strong>`;
     }
   </script>
 </body>
