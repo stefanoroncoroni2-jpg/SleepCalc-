@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcola l’ora per dormire</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      color: #ffffff;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    input[type="time"] {
+      font-size: 1.2em;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px 0;
+      width: 60%;
+      max-width: 200px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 12px 25px;
+      margin-top: 10px;
+      background-color: #ff6f61;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff3b2e;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 1.5em;
+      background-color: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .tips {
+      margin-top: 50px;
+      font-size: 1em;
+      color: #cce0ff;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #a0c4ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛌 A che ora dormire?</h1>
+  <p>Inserisci l’orario in cui vuoi svegliarti:</p>
+  <input type="time" id="wakeTime">
+  <br>
+  <button onclick="calculate()">Calcola</button>
+
+  <div class="result" id="result"></div>
+
+  <div class="tips">
+    💡 Consigli per dormire meglio:<br>
+    • Spegni i dispositivi 30 min prima di dormire<br>
+    • Mantieni la stanza fresca e buia<br>
+    • Evita caffeina e zuccheri la sera<br>
+    • Segui cicli di sonno di circa 90 minuti
+  </div>
+
+  <footer>© 2025 SleepCalc | Tutti i diritti riservati</footer>
+
+  <script>
+    function calculate() {
+      const wake = document.getElementById('wakeTime').value;
+      if (!wake) return;
+      const [h, m] = wake.split(':').map(Number);
+      let date = new Date();
+      date.setHours(h, m);
+      const cycles = [];
+      for (let i = 1; i <= 6; i++) {
+        date = new Date(date.getTime() - 90 * 60000);
+        const hh = date.getHours().toString().padStart(2, '0');
+        const mm = date.getMinutes().toString().padStart(2, '0');
+        cycles.push(`${hh}:${mm}`);
+      }
+      document.getElementById('result').innerHTML =
+        `Dovresti addormentarti alle:<br><strong>${cycles.reverse().join(' • ')}</strong>`;
+    }
+  </script>
+</body>
+</html>
